@@ -1,12 +1,14 @@
-# vsim alu_tb -do "add wave *; run -all" 
-# Start time: 12:29:37 on Nov 23,2025
+# vsim -c alu_tb -do "run -all; quit -f" 
+# Start time: 11:00:12 on Nov 24,2025
 # Loading sv_std.std
 # Loading work.pkg
 # Loading work.alu_tb
 # Loading work.alu_sv_unit
 # Loading work.alu
-# add wave *
-#  run -all
+# run -all
+# ** Error: (vsim-7) Failed to open VCD file "target/alu/alu.vcd" in write mode.
+# No such file or directory. (errno = ENOENT)    : verif/alu/tb_alu.sv(29)
+#    Time: 0 ps  Iteration: 0  Instance: /alu_tb
 # === ALU Testbench Start ===
 # PASS: ADD: 10 + 5 = 15
 # PASS: SUB: 10 - 5 = 5
@@ -21,7 +23,5 @@
 # === ALU Testbench Complete ===
 # ** Note: $finish    : verif/alu/tb_alu.sv(104)
 #    Time: 10 ns  Iteration: 0  Instance: /alu_tb
-# 1
-# Break in Module alu_tb at verif/alu/tb_alu.sv line 104
-# End time: 12:30:08 on Nov 23,2025, Elapsed time: 0:00:31
-# Errors: 0, Warnings: 0
+# End time: 11:00:15 on Nov 24,2025, Elapsed time: 0:00:03
+# Errors: 1, Warnings: 0

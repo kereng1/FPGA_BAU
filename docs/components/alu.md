@@ -1,11 +1,13 @@
 # Arithmetic Logic Unit (ALU)
 
 ## Overview
+
 The Arithmetic Logic Unit (ALU) is a fundamental component of the CPU that performs arithmetic and logical operations on 32-bit operands. It supports a comprehensive set of operations defined in the RISC-V instruction set architecture.
 
 ## Interface
 
 ### Inputs
+
 1. **alu_op[3:0]** (t_alu_op)
    - Operation select signal
    - Determines which operation to perform
