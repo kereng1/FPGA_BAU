@@ -28,3 +28,12 @@ The module communicates using standard signals: adrs provides the full address, 
 
 vlog +incdir+source/common source/d_mem/d_mem_Word_Aligned_Block_RAM.sv verif/d_mem_tb.sv
 vsim work.mem_tb
+
+
+
+## Architecture Diagram
+
+![Data Memory Architecture](assets/d_mem.png)
+
+*Figure 1: Data Memory (DMEM) Word-Aligned Block RAM with Shift Logic*
+The diagram illustrates the "Shift Before and After" mechanism that enables efficient byte/halfword access on a 32-bit word-aligned memory array.
