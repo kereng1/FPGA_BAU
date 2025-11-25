@@ -1,8 +1,2 @@
-# work directory
-work/
-
-#Simulation files
-*.vcd
-
 # built directory
 target/
