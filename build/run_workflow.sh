@@ -78,14 +78,17 @@ run_gui() {
     log_and_display "Opening ModelSim GUI with waveforms..."
     log_and_display ""
 
-    # Run GUI mode, capture output to logfile
-    vsim -work "$WORK_DIR" -l "$TRANSCRIPT" -wlf "$WLF_FILE" "$TB_NAME" -do "add wave *; run -all; quit -f" >> "$LOG_FILE" 2>&1 &
+    # Run GUI mode - add waves and run simulation, but keep GUI open
+    vsim -work "$WORK_DIR" -l "$TRANSCRIPT" -wlf "$WLF_FILE" "$TB_NAME" -do "add wave *; run -all" >> "$LOG_FILE" 2>&1
 
-    # Allow GUI to start properly
-    sleep 1
+    if [ $? -ne 0 ]; then
+        log_and_display "❌ Simulation FAILED"
+        log_and_display "Check the log file: $LOG_FILE"
+        exit 1
+    fi
 
-    log_and_display "✔ Simulation started (GUI mode)"
-    log_and_display "Console output will appear in: $LOG_FILE"
+    log_and_display "✔ Simulation completed (GUI remains open)"
+    log_and_display "Console output: $LOG_FILE"
 }
 
 # -----------------------------------------------------------
@@ -96,11 +99,9 @@ clean() {
     # Clean old files in project root (for backward compatibility)
     rm -rf work/
     rm -f transcript vsim.wlf
-    rm -f *.vcd
     # Clean all target directory contents (work library, transcript, waveform files, etc.)
     rm -rf target/work
     rm -f target/transcript target/vsim.wlf target/*.wlf
-    rm -f target/*.vcd
     # Note: Logs in target/logs are preserved. To remove everything including logs, delete target/ manually
     log_and_display "✔ Clean complete!"
 }

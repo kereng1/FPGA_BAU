@@ -20,14 +20,6 @@ import pkg::*;
     );
 
     initial begin
-        //////////////////////////////////////////////////////////////////////////////
-        // path to the VCD file
-        // if you dont use modelsim to run the tb you can use this to save the waveform
-        //////////////////////////////////////////////////////////////////////////////
-        string vcd_path; 
-        if (!$value$plusargs("VCD=%s", vcd_path)) vcd_path = "target/alu/alu.vcd";
-        $dumpfile(vcd_path);
-        $dumpvars(0, alu_tb);
         $display("=== ALU Testbench Start ===");
         
         // Test ADD, expected output: 10 + 5 = 15
