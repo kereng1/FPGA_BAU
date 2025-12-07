@@ -1,3 +1,6 @@
+// this module is the execute stage of the pipeline
+// it performs the ALU operation and the branch condition check and the forwarding unit
+
 `include "dff_macros.svh"
 
 module rv_exe
