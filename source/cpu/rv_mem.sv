@@ -1,7 +1,7 @@
 // Memory Access stage of the pipeline
 // Access D_MEM for Wrote (STORE) and Reads (LOAD)
 
-include "dff_macros.svh"
+`include "dff_macros.svh"
 
 module rv_mem
     import pkg::*;

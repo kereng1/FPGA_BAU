@@ -14,6 +14,8 @@ package pkg;
         ALU_AND  = 4'b0111
     } t_alu_op;
 
+//  Execute stage 
+//------------------------------
     // Branch condition operation type
     typedef enum logic [2:0] {
         BRANCH_COND_NONE = 3'b000,
@@ -50,6 +52,21 @@ package pkg;
         t_alu_op            alu_op;                 // ALU operation
         t_branch_cond_op    branch_cond_op;         // Branch condition operation
     } t_exe_ctrl;
+
+//  Memory access (Q103H stage) 
+//------------------------------
+    // mux for the write back data 
+    typedef enum logic {
+        SEL_PC_PLUS4 = 1'b0,
+        SEL_ALU_OUT = 1'b1
+    } t_mem_wb_sel;
+
+
+    // Memory access control signals
+    typedef struct packed {
+        t_mem_wb_sel      sel_wb_Q103H;       // mux for the write back data 
+    } t_mem_ctrl;
+
 
 
 endpackage
