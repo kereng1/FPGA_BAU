@@ -10,8 +10,8 @@ module rv_ma
 (
     input logic clk,
     input logic rst,
-    input logic ready_Q104H,
     input t_mem_ctrl ctrl,
+    input t_wb_ctrl wb_ctrl,
     input logic [31:0] pc_plus4_Q103H,
     input logic [31:0] alu_out_Q103H,
 
@@ -35,6 +35,6 @@ assign wb_data_Q103H = (ctrl.sel_wb_Q103H == SEL_PC_PLUS4) ? pc_plus4_Q103H :
                        (ctrl.sel_wb_Q103H == SEL_ALU_OUT)  ? alu_out_Q103H :
                                                              32'b0;
 
-`DFF_EN(pre_wb_data_Q104H, wb_data_Q103H, clk, ready_Q104H)
+`DFF_EN(pre_wb_data_Q104H, wb_data_Q103H, clk, wb_ctrl.ready_Q104H)
 
 endmodule
